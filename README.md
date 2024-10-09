@@ -14,8 +14,10 @@ This is a simple Expense Tracker app built using React Native with Expo, featuri
 ## Screenshots
 
 <div style="display: flex; justify-content: space-around;">
-  <img width="150" alt="Screenshot 2024-10-09 at 11 05 48" src="https://github.com/user-attachments/assets/9a4b8cc9-7b62-496c-8f9b-c50bde0205cc">
-  <img width="150" alt="Screenshot 2024-10-09 at 11 06 37" src="https://github.com/user-attachments/assets/f114f44c-f347-46d1-99e3-bb194196035f">
+  <img width="150" alt="Screenshot 2024-10-09 at 11 06 18" src="https://github.com/user-attachments/assets/98ae11b2-dc2c-4ec4-aac5-84a0c8c2db40">
+  <img width="150" alt="Screenshot 2024-10-09 at 11 06 18" src="https://github.com/user-attachments/assets/24c389d9-5015-4c91-922a-f45ccfb731cc">
+    <img width="150" alt="Screenshot 2024-10-09 at 11 06 18" src="https://github.com/user-attachments/assets/83228a82-4688-4197-9228-8b4b308f4856">
+    <img width="150" alt="Screenshot 2024-10-09 at 11 06 18" src="https://github.com/user-attachments/assets/2f183c48-7e54-480b-af25-3875d0fbd369">
 </div>
 
 ### Dashboard View
