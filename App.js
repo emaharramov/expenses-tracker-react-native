@@ -10,18 +10,19 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import Entypo from "@expo/vector-icons/Entypo";
-import Home from "./src/screens/Home";
-import About from "./src/screens/About";
-import Login from "./src/screens/Login"; // AuthForm bileşenini kullanan Login bileşeni
-import Register from "./src/screens/Register"; // AuthForm bileşenini kullanan Register bileşeni
-import Dashboard from "./src/screens/Dashboard";
+import Home from "./src/screens/Home/View/Home";
+import About from "./src/screens/About/View/About";
+import Login from "./src/screens/Users/Login/View/Login";
+import Register from "./src/screens/Users/Registers/View/Register";
+import Dashboard from "./src/screens/Dashboard/View/Dashboard";
 import AuthContextProvider, { AuthContext } from "./src/store/auth-context";
-import Expenses from "./src/screens/Expenses";
-import AddExpense from "./src/screens/AddExpense";
-import Setting from "./src/screens/Setting";
+import Expenses from "./src/screens/Expenses/View/Expenses";
+import AddExpense from "./src/screens/Expenses/View/AddExpense";
+import Setting from "./src/screens/UserSetting/View/Setting";
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
+
 
 function MainDrawer() {
   return (
@@ -75,7 +76,7 @@ function MainDrawer() {
       />
       <Drawer.Screen
         name="Login"
-        component={Login} // AuthForm bileşenini kullanan Login bileşeni
+        component={Login}
         options={{
           drawerIcon: ({ color, size }) => (
             <Ionicons name="log-in" color={color} size={size} />
@@ -84,7 +85,7 @@ function MainDrawer() {
       />
       <Drawer.Screen
         name="Register"
-        component={Register} // AuthForm bileşenini kullanan Register bileşeni
+        component={Register}
         options={{
           drawerIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" size={size} color={color} />
@@ -95,7 +96,7 @@ function MainDrawer() {
   );
 }
 
-function AuthenticatedStack() {
+function AuthenticatedDrawer() {
   const authCtx = useContext(AuthContext);
 
   function logoutHandler() {
@@ -188,7 +189,7 @@ function RootNavigator() {
   return (
     <NavigationContainer>
       <SafeAreaView style={{ flex: 1 }}>
-        {authContext.isAuthenticated ? <AuthenticatedStack /> : <MainDrawer />}
+        {authContext.isAuthenticated ? <AuthenticatedDrawer /> : <MainDrawer />}
       </SafeAreaView>
     </NavigationContainer>
   );

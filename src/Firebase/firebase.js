@@ -1,7 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, onValue, push, set } from "firebase/database";
+import { getDatabase, ref, onValue, push, set, remove, update } from "firebase/database";
+import { useState, useEffect } from 'react';
 import axios from "axios";
-import { useEffect, useState } from "react";
+// require('dotenv').config();
 
 const firebaseConfig = {
   apiKey: "AIzaSyAAHCaJFSnOxmcWPNxFGpSGffqBLwIHe68",
@@ -20,6 +21,16 @@ const addExpense = (userId, expense) => {
   const expensesRef = ref(database, `expenses/${userId}`);
   const newExpenseRef = push(expensesRef);
   set(newExpenseRef, expense);
+};
+
+const deleteExpense = (userId, expenseId) => {
+  const expenseRef = ref(database, `expenses/${userId}/${expenseId}`);
+  return remove(expenseRef);
+};
+
+const updateExpense = (userId, expenseId, updatedExpense) => {
+  const expenseRef = ref(database, `expenses/${userId}/${expenseId}`);
+  return update(expenseRef, updatedExpense);
 };
 
 const useExpenses = (userId) => {
@@ -46,7 +57,7 @@ const useExpenses = (userId) => {
 };
 
 const BASE_URL = "https://identitytoolkit.googleapis.com/v1/accounts:";
-const API_KEY = "YOUR_API_KEY";
+const API_KEY = "AIzaSyAAHCaJFSnOxmcWPNxFGpSGffqBLwIHe68";
 
 async function updateUserProfile(idToken, fullName, password) {
   const payload = {
@@ -60,6 +71,10 @@ async function updateUserProfile(idToken, fullName, password) {
   if (password) {
     payload.password = password;
   }
+  if (fullName && password) {
+    payload.displayName = fullName;
+    payload.password = password;
+  }
 
   const response = await axios.post(`${BASE_URL}update?key=${API_KEY}`, payload);
 
@@ -70,5 +85,4 @@ async function updateUserProfile(idToken, fullName, password) {
   }
 }
 
-export { database, addExpense, useExpenses, updateUserProfile };
-
+export { database, addExpense, deleteExpense, updateExpense, useExpenses, updateUserProfile  };
